@@ -1,2 +1,2 @@
 cd  C:\Users\krishna\PycharmProjects\Robotframework\TestCases
-robot  TestDemo.robot
+robot  TestCases/*.robot

@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'eeba6c4e-1b23-4089-b108-8387b31a4356', url: 'https://github.com/shivrajHippargi-1994/RobotFramework.git']]])
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                 git branch: 'main', credentialsId: 'eeba6c4e-1b23-4089-b108-8387b31a4356', url: 'https://github.com/shivrajHippargi-1994/RobotFramework.git'
+                 bat 'run.bat'
+            }
+        }
+        stage('Publish Results'){
+            steps{
+                 robot archiveDirName: 'robot-plugin', outputPath: './results', overwriteXAxisLabel: '', passThreshold: 100.0, unstableThreshold: 50.0
+                }
+            }
+    }
+}
