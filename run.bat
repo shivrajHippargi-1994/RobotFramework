@@ -1,2 +1,2 @@
 cd  C:\Users\krishna\PycharmProjects\Robotframework
-robot TestDemo.robot
+robot -d results TestDemo.robot
